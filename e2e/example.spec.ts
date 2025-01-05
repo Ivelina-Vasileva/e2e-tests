@@ -10,7 +10,6 @@ test('title name', async ({ page }) => {
 test('login button present', async ({ page }) => {
     await page.goto('https://pausejeans-online.com/');
     await page.locator('//*[@id="cookiesplus-form"]/div[3]/div[1]/div[1]/div[1]/button').click();
-    //await page.locator('//*[@id="header"]/div/nav/div[2]/div/div/div/div/div[2]/div[1]/ul/li[1]/a/span').click();
     await page.locator('//*[@id="memgamenu-form_2651469545"]/nav/div[2]/ul/li[3]/a/span').click();
     await expect(page).toHaveTitle('▷ Дамски дрехи → Онлайн облекло и цени → Pause Jeans™');
     await page.locator('//*[@id="js-product-list"]/div[1]/div/div/div[1]/article/div/div[1]/a/img').click();
@@ -18,12 +17,6 @@ test('login button present', async ({ page }) => {
     await page.locator('//*[@id="add-to-cart-or-refresh"]/div[2]/div/div[1]/div[2]/button').click();
 
     const banner = page.locator('//*[@id="product"]/div[15]/div/div/span[3]');
-
-    const productName = await page.locator('//*[@id="main"]/div/div[2]/h1').innerText();
-    
-    // await expect(banner).toHaveText(productName, {
-    //     ignoreCase: true
-    // })
 
     await expect(banner).toHaveText('Цикламени чорапи Samples Продъктът беше добавен към количката');
 });
