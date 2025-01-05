@@ -25,5 +25,5 @@ test('login button present', async ({ page }) => {
     //     ignoreCase: true
     // })
 
-  await expect(banner).toHaveText('Цикламени чорапи Samples Продъктът беше добавен към количката');
+    await expect(banner).toHaveText('Цикламени чорапи Samples Продъктът беше добавен към количката');
 });
