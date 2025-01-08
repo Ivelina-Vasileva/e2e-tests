@@ -6,7 +6,7 @@ setup('authenticateNegative', async ({ page }) => {
   await page.getByLabel("Password").fill('Password123');
   await page.getByRole('button', { name: 'Submit' }).click();
   const errorMessage = await page.locator('//*[@id="error"]').textContent();
-  await expect(errorMessage).toContain('Your username is invalid!');
+  expect(errorMessage).toContain('Your username is invalid!');
   await page.close();
 })
 
