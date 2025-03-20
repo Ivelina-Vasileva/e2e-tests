@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { HomePage } from './pages/HomePage';
+import { BasePage } from './pages/BasePage';
 
 test('Pause Site - Search Engine', async ({ page }) => {
-  await page.goto('https://pausejeans-online.com/');
-  await expect(page).toHaveTitle('▷ Pause Jeans — онлайн магазин за дамски и мъжки дрехи');
-  await page.getByRole('button', { name: 'Приеми' }).click();
-  await page.locator('//*[@id="leo_search_query_top"]').fill('чорапи');
-  await page.locator('//button[@id="leo_search_top_button"]').click();
-  await expect(page).toHaveTitle("PauseJeans");
+  const homePage = new HomePage(page);
+  const basePage = new BasePage(page);
+  await homePage.goto();
+  expect(await basePage.checkTitle('▷ Pause Jeans — онлайн магазин за дамски и мъжки дрехи'));
+  await homePage.acceptCookies();
+  await homePage.search('чорапи');
+  expect(await basePage.checkTitle("PauseJeans"));
   await page.close();
 })
